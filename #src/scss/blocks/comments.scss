@@ -1,0 +1,59 @@
+.comments {
+   background: $white;
+   padding: 120px 0 110px;
+
+   @media (max-width: $md3+px) {
+      padding: 50px 0;
+   }
+
+   &__body {
+      max-width: 710px;
+      margin: 0 auto;
+   }
+
+   &__item {
+      padding: 17px 0;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid $grey2;
+
+      &:last-child {
+         border-bottom: 1px solid $grey2; 
+      }
+
+      @media (max-width: $md3+px) {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
+   }
+
+   &__photo {
+      margin-right: 65px;
+
+      @media (max-width: $md3+px) {
+         margin-bottom: 20px;
+         margin-right: 0;
+      }
+   }
+
+   &__content {
+      max-width: 550px;
+      color: $black1;
+   }
+
+   &__name {
+      @include fonts(24px, 32.68px, 600);
+      margin-bottom: 8px;
+   }
+
+   &__text {
+      @include content-text;
+      margin-bottom: 15px;
+   }
+
+   &__date {
+      @include content-text;
+      color: $grey;
+   }
+}

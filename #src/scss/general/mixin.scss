@@ -1,0 +1,77 @@
+// colors
+$black: #222;
+$black1: #1a1a1a;
+$white: #fff;
+$white1: #f9f9f9;
+$blue: #010a43;
+$red: #ff2e63;
+$red1: #fe1010;
+$green: #00a944;
+$grey: #adadad;
+$grey1: rgba(34, 34, 34, 0.2);
+$grey2: #c4c4c4;
+
+// container
+$maxWidth: 1920;
+$maxWidthContainer: 1170px;
+
+@mixin adaptiv-value($property, $startSize, $minSize, $type) {
+  $addSize: $startSize - $minSize;
+  @if $type==1 {
+    //Только если меньше контейнера
+    #{$property}: $startSize + px;
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+    }
+  } @else if $type==2 {
+    //Только если больше контейнера
+    #{$property}: $startSize + px;
+    @media (min-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+    }
+  } @else {
+    //Всегда
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+  }
+}
+
+@mixin fonts($font-size, $line-height, $font-weight) {
+  font-size: $font-size;
+  line-height: $line-height / $font-size * 100%;
+  font-weight: $font-weight;
+}
+
+// fonts
+@mixin font($font_name, $file_name, $weight, $style) {
+  @font-face {
+    font-family: $font_name;
+    font-display: swap;
+    src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+    font-weight: #{$weight};
+    font-style: #{$style};
+  }
+}
+
+@mixin main-title {
+  @include fonts(36px, 43.2px, 700);
+}
+
+@mixin content-text {
+  @include fonts(16px, 21.79px, 400);
+}
+
+@mixin content-text-bold {
+  @include fonts(16px, 21.79px, 700);
+}
+
+@mixin button-text {
+  @include fonts(18px, 24.51px, 800);
+}
+
+@mixin input-text {
+  @include fonts(14px, 19.07px, 400);
+}
+
+@mixin small-text {
+  @include fonts(10px, 13.62px, 400);
+}

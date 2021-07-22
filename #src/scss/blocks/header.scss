@@ -1,0 +1,46 @@
+.header {
+  background: $white;
+
+  &__rewards {
+    background: $blue;
+    text-align: center;
+    height: 50px;
+    @include main-title;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+
+    @media (max-width: $md2+px) {
+      font-size: 32px;
+    }
+    
+    @media (max-width: $md3+px) {
+      font-size: 25px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  &__date-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  &__date {
+    @include small-text;
+    color: $black;
+  }
+
+  &__flag {
+    margin-left: 8px;
+  }
+}

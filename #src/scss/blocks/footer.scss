@@ -1,0 +1,41 @@
+.footer {
+   background: $blue;
+   margin-top: auto;
+   color: $white1;
+
+   &__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 0 48px;
+
+      @media (max-width: $md4+px) {
+         flex-direction: column;
+      }
+   }
+
+   &__cards {
+      @media (max-width: $md4+px) {
+         margin-top: 25px;
+      }
+   }
+
+   &__text {
+      @include content-text;
+
+      a {
+         text-decoration: underline;
+         color: $white1;
+      }
+
+      span {
+         @include content-text-bold;
+      }
+   }
+
+   &__copyright {
+      margin: 50px 0 20px;
+      @include content-text-bold;
+      text-align: center;
+   }
+}

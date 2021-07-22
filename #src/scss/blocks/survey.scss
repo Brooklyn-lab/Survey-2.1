@@ -1,0 +1,413 @@
+.first-screen {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 80px 0;
+
+   @media (max-width: $md2+px) {
+      flex-direction: column-reverse;
+   }
+
+   @media (max-width: $md4+px) {
+      padding: 40px 0;
+   }
+
+   &__content {
+      max-width: 710px;
+      width: 100%;
+
+      @media (max-width: $md1+px) {
+         max-width: initial;
+         width: 50%;
+      }
+
+      @media (max-width: $md2+px) {
+         width: 100%;
+         margin-top: 25px;
+      }
+   }
+
+   &__text {
+      @include content-text;
+
+      &:first-child {
+         margin-bottom: 30px;
+      }
+
+      &:last-child {
+         margin-bottom: 30px;
+      }
+   }
+
+   &__offer-date {
+      @include content-text-bold;
+      margin-bottom: 15px;
+   }
+
+   &__form-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 15px;
+
+      @media (max-width: $md4+px) {
+         flex-direction: column;
+      }
+   }
+
+   &__form-label {
+      display: flex;
+      flex-direction: column;
+      max-width: 464px;
+   }
+
+   &__form-input {
+      border-radius: 10px;
+      width: 100%;
+      height: 57px;
+      padding: 15px;
+      border: 1px solid $grey;
+      background: transparent;
+      transition: all 0.3s ease 0s;
+      position: relative;
+   }
+
+   &__form-text {
+      margin-top: 8px;
+      color: $black;
+      @include small-text;
+
+      span {
+         text-decoration: underline;
+      }
+   }
+
+   &__form-button {
+      @media (max-width: $md4+px) {
+         max-width: initial;
+         width: 100%;
+      }
+   }
+}
+
+.survey {
+   &__wrapper {
+      padding: 100px 0;
+
+      @media (max-width: $md2+px) {
+         padding: 0;
+      }
+   }
+
+   &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      @media (max-width: $md2+px) {
+         flex-direction: column;
+         padding: 100px 15px;
+         margin: 0 auto;
+         display: flex;
+         align-items: center;
+      }
+
+      @media (max-width: $md4+px) {
+         padding: 75px 10px 50px;
+      }
+   }
+
+   &__body {
+      background: url("../img/background.jpg") no-repeat center/cover;
+      min-height: 740px;
+
+      @media (max-width: $md2+px) {
+         min-height: initial;
+         background: url("../img/background_768.jpg") no-repeat center/cover;
+      }
+
+      @media (max-width: $md4+px) {
+         background: url("../img/background_576.jpg") no-repeat center/cover;
+      }
+   }
+
+   &__question {
+      margin-top: 113px;
+      max-width: 390px;
+
+      @media (max-width: $md2+px) {
+         margin: 0;
+         max-width: 528px;
+      }
+   }
+
+   &__question-title {
+      @include main-title;
+      position: relative;
+
+      &::before {
+         position: absolute;
+         content: "";
+         width: 150px;
+         height: 1px;
+         background: $black;
+         top: -35px;
+         left: 0;
+      }
+   }
+
+   &__choice-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 528px;
+      width: 100%;
+      padding: 30px 20px 38px;
+      position: relative;
+      top: -75px;
+      box-shadow: 3px -1px 21px rgba(0, 0, 0, 0.25);
+      background: $white1;
+
+      @media (max-width: $md2+px) {
+         top: 0;
+         margin-top: 30px;
+      }
+   }
+}
+
+.form {
+   &__title {
+      @include fonts(24px, 32.68px, 600);
+      text-align: center;
+   }
+
+   &__radio-btn {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      &::after {
+         position: absolute;
+         content: "";
+         border: 1px solid $black;
+         background: transparent;
+         border-radius: 50%;
+         width: 30px;
+         height: 30px;
+         left: 0;
+         top: 50%;
+         transform: translateY(-50%);
+      }
+
+      span {
+         margin-left: 46px;
+      }
+   }
+
+   &__button {
+      margin-top: 25px;
+      max-width: initial;
+      width: 100%;
+   }
+
+   &__textarea {
+      margin-top: 15px;
+      height: 200px;
+      border: 1px solid $grey1;
+      border-radius: 10px;
+      background: $white1;
+      resize: none;
+      padding: 15px;
+      display: none;
+
+      &.show {
+         display: block;
+      }
+   }
+}
+
+.survey__textarea {
+   display: block;
+}
+
+.submit {
+   padding: 110px 0 100px;
+
+   @media (max-width: $md3+px) {
+      padding: 50px 0;
+   }
+
+   &__wrapper {
+      padding: 40px 0;
+      border-top: 1px solid $grey2;
+      border-bottom: 1px solid $grey2;
+      margin-top: 40px;
+   }
+
+   &__title {
+      text-align: center;
+   }
+
+   &__body {
+      max-width: 711px;
+
+      @media (max-width: $md1+px) {
+         max-width: 400px;
+      }
+
+      @media (max-width: $md2+px) {
+         max-width: initial;
+      }
+   }
+
+   &__progress-bar {
+      width: 100%;
+      height: 10px;
+
+      &::-webkit-progress-bar {
+         border-radius: 20px;
+         background: $grey2;
+      }
+
+      &::-webkit-progress-value {
+         border-radius: 20px;
+         background: $red;
+      }
+   }
+
+   &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+   }
+
+   &__progress-title {
+      @include content-text-bold;
+   }
+
+   &__process {
+      margin-top: 50px;
+   }
+
+   &__process-item {
+      display: flex;
+      align-items: center;
+
+      &:not(:last-child) {
+         margin-bottom: 20px;
+      }
+   }
+
+   &__process-spinner {
+      position: relative;
+      top: -2px;
+
+      &.active {
+         animation: preloader-rotate 2s infinite linear;
+
+         @keyframes preloader-rotate {
+            100% {
+               transform: rotate(360deg);
+            }
+         }
+      }
+   }
+
+   &__process-text {
+      margin-left: 17px;
+   }
+
+   &__image {
+      @media (max-width: $md2+px) {
+         display: none;
+      }
+   }
+
+   &__text {
+      @include content-text;
+
+      &:not(:last-child) {
+         margin-bottom: 25px;
+      }
+
+      span {
+         @include content-text-bold;
+      }
+   }
+}
+
+.hide {
+   color: $grey2;
+}
+
+.electronic .survey__body {
+   background: url("../img/background1.jpg") no-repeat center/cover;
+
+   @media (max-width: $md2+px) {
+      background: url("../img/background1_768.jpg") no-repeat center/cover;
+   }
+
+   @media (max-width: $md4+px) {
+      background: url("../img/background1_576.jpg") no-repeat center/cover;
+   }
+}
+
+.devices .survey__body {
+   background: url("../img/background2.jpg") no-repeat center/cover;
+
+   @media (max-width: $md2+px) {
+      background: url("../img/background2_768.jpg") no-repeat center/cover;
+   }
+
+   @media (max-width: $md4+px) {
+      background: url("../img/background2_576.jpg") no-repeat center/cover;
+   }
+}
+
+.kitchen .survey__body {
+   background: url("../img/background3.jpg") no-repeat center/cover;
+
+   @media (max-width: $md2+px) {
+      background: url("../img/background3_768.jpg") no-repeat center/cover;
+   }
+
+   @media (max-width: $md4+px) {
+      background: url("../img/background3_576.jpg") no-repeat center/cover;
+   }
+}
+
+.health .survey__body {
+   background: url("../img/background4.jpg") no-repeat center/cover;
+
+   @media (max-width: $md2+px) {
+      background: url("../img/background4_768.jpg") no-repeat center/cover;
+   }
+
+   @media (max-width: $md4+px) {
+      background: url("../img/background4_576.jpg") no-repeat center/cover;
+   }
+}
+
+.clothing .survey__body {
+   background: url("../img/background5.jpg") no-repeat center/cover;
+
+   @media (max-width: $md2+px) {
+      background: url("../img/background5_768.jpg") no-repeat center/cover;
+   }
+
+   @media (max-width: $md4+px) {
+      background: url("../img/background5_576.jpg") no-repeat center/cover;
+   }
+}
+
+.food .survey__body {
+   background: url("../img/background6.jpg") no-repeat center/cover;
+
+   @media (max-width: $md2+px) {
+      background: url("../img/background6_768.jpg") no-repeat center/cover;
+   }
+
+   @media (max-width: $md4+px) {
+      background: url("../img/background6_576.jpg") no-repeat center/cover;
+   }
+}
