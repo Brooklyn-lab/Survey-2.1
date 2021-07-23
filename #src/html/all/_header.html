@@ -5,11 +5,17 @@
   <div class="container">
     <div class="header__body">
       <a href="./home.html">
-        <img src="./img/logo-header.svg" width="166" height="60" alt="RWS Survey">
+        <img class="logo" src="./img/logo-header.svg" srcset="" width="166" height="60" alt="RWS Survey">
       </a>
       <div class="header__date-wrapper">
         <div class="header__date newDate"></div>
-        <img src="./img/flag_usa.png" width="50" height="35" alt="flag USA" class="header__flag">
+        <picture>
+          <source type="image/webp" srcset="./img/flag_usa.webp" media="(min-width: 768px)">
+          <source type="image/webp" srcset="./img/flag_usa_576.webp" width="29" height="20" media="(min-width: 0px)">
+          <source type="image/png" srcset="./img/flag_usa.png" media="(min-width: 576px)">
+          <source type="image/png" srcset="./img/flag_usa_576.png" width="29" height="20" media="(min-width: 0px)">
+          <img src="./img/flag_usa.png" width="50" height="35" alt="flag USA" class="header__flag">
+        </picture>
       </div>
     </div>
   </div>

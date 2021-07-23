@@ -169,7 +169,6 @@ $md4: 575.98;
   @media (max-width: $md3+px) {
     max-width: 768px;
   }
-
   @media (max-width: $md4+px) {
     max-width: 450px;
     padding: 0 10px;
@@ -204,4 +203,11 @@ $md4: 575.98;
 .content-title {
   @include main-title;
   color: $black;
+}
+
+.logo {
+  @media (max-width: $md4+px) {
+    width: 120px;
+    height: 45px;
+  }
 }
