@@ -264,12 +264,14 @@
       width: 100%;
       height: 10px;
 
-      &::-webkit-progress-bar {
+      &::-webkit-progress-bar,
+      &::-moz-progress-bar {
          border-radius: 20px;
          background: $grey2;
       }
 
-      &::-webkit-progress-value {
+      &::-webkit-progress-value,
+      &::-moz-progress-value {
          border-radius: 20px;
          background: $red;
       }

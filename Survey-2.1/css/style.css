@@ -662,12 +662,14 @@ label.error {
   height: 10px;
 }
 
-.submit__progress-bar::-webkit-progress-bar {
+.submit__progress-bar::-webkit-progress-bar,
+.submit__progress-bar::-moz-progress-bar {
   border-radius: 20px;
   background: #c4c4c4;
 }
 
-.submit__progress-bar::-webkit-progress-value {
+.submit__progress-bar::-webkit-progress-value,
+.submit__progress-bar::-moz-progress-value {
   border-radius: 20px;
   background: #ff2e63;
 }
