@@ -402,15 +402,3 @@
       background: url("../img/background5_576.jpg") no-repeat center/cover;
    }
 }
-
-.food .survey__body {
-   background: url("../img/background6.jpg") no-repeat center/cover;
-
-   @media (max-width: $md2+px) {
-      background: url("../img/background6_768.jpg") no-repeat center/cover;
-   }
-
-   @media (max-width: $md4+px) {
-      background: url("../img/background6_576.jpg") no-repeat center/cover;
-   }
-}

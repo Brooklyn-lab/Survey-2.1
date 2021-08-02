@@ -54,7 +54,7 @@ if (!empty($email)) {
 } elseif ($shopOn === 'Other') {
    $d = fopen("leads.xls", "a+");
    fwrite($d," <tr>");     
-   fwrite($d," <td>$shopOn</td> <td>$shopOnOther</td> <td>$date / $time</td>"); 
+   fwrite($d," <td>$shopOn</td> <td>$shopOnOther</td> <td>$date / $time</td>");
    fwrite($d," </tr>");  
    fwrite($d,"\n ");    
    fclose($d);
