@@ -1,8 +1,22 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
+date_default_timezone_set("Europe/Kiev");
 $email = htmlspecialchars($_POST["email"]);
-$shopOn = htmlspecialchars($_POST["inputValue"]);
-$shopOnOther = htmlspecialchars($_POST["otherTextValue"]);
+$q1 = htmlspecialchars($_POST['question1']);
+$q2 = htmlspecialchars($_POST['question2']);
+$q2_1 = htmlspecialchars($_POST['question2_1_other']);
+$q2_2 = htmlspecialchars($_POST['question2_2']);
+$q2_3 = htmlspecialchars($_POST['question2_3']);
+$q3 = htmlspecialchars($_POST['question3']);
+$q3_1 = htmlspecialchars($_POST['question3_other']);
+$q4 = htmlspecialchars($_POST['question4']);
+$q4_1 = htmlspecialchars($_POST['question4_other']);
+$q5 = htmlspecialchars($_POST['question5']);
+$q5_1 = htmlspecialchars($_POST['question5_other']);
+$q6 = htmlspecialchars($_POST['question6']);
+$q6_1 = htmlspecialchars($_POST['question6_other']);
+$q7 = htmlspecialchars($_POST['question7']);
+$q7_1 = htmlspecialchars($_POST['question7_other']);
 
 $refferer = getenv('HTTP_REFERER');
 $date=date("d.m.y"); // число.месяц.год  
@@ -37,26 +51,9 @@ $time=date("H:i"); // часы:минуты:секунды
 
 // Сохранение инфо о лидах в файл leads.xls
 
-if (!empty($email)) {
-   $d = fopen("leads.xls", "a+");
-   fwrite($d," <tr>");     
-   fwrite($d," <td>$email</td> <td>$refferer</td> <td>$date / $time</td>"); 
-   fwrite($d," </tr>");  
-   fwrite($d,"\n ");    
-   fclose($d);
-} elseif (empty($email) && $shopOn !== 'Other') {
-   $d = fopen("leads.xls", "a+");
-   fwrite($d," <tr>");     
-   fwrite($d," <td>$shopOn</td> <td>$date / $time</td>"); 
-   fwrite($d," </tr>");  
-   fwrite($d,"\n ");    
-   fclose($d);
-} elseif ($shopOn === 'Other') {
-   $d = fopen("leads.xls", "a+");
-   fwrite($d," <tr>");     
-   fwrite($d," <td>$shopOn</td> <td>$shopOnOther</td> <td>$date / $time</td>");
-   fwrite($d," </tr>");  
-   fwrite($d,"\n ");    
-   fclose($d);
-}
-?>
+$d = fopen("leads.xls", "a+");
+fwrite($d," <tr>");     
+fwrite($d," <td>$email</td> <td>$q1</td> <td>$q2</td> <td>$q2_1</td> <td>$q2_2</td> <td>$q2_3</td> <td>$q3</td> <td>$q3_1</td> <td>$q4</td> <td>$q4_1</td> <td>$q5</td> <td>$q5_1</td> <td>$q6</td> <td>$q6_1</td> <td>$q7</td> <td>$q7_1</td> <td>$refferer</td> <td>$date / $time</td>"); 
+fwrite($d," </tr>");  
+fwrite($d,"\n ");    
+fclose($d);

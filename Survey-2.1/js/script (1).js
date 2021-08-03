@@ -23,7 +23,7 @@ jQuery(document).ready(function () {
    var objToday = new Date(),
       domEnder = function () { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return ""; a = parseInt((a + "").charAt(1)); return 1 == a ? "" : 2 == a ? "" : 3 == a ? "" : "" }(),
       dayOfMonth = today + (objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
-      months = new Array('January', 'February', 'March', 'April', 'July', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+      months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
       curMonth = months[objToday.getMonth()],
       curYear = objToday.getFullYear(),
       curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
@@ -40,24 +40,9 @@ jQuery(document).ready(function () {
    const form = $('.form')
    const mainWrapper = $('.main-wrapper')
 
-   let data = {
-      email = '',
-      question1 = '',
-      question2 = '',
-      question2_1_other = '',
-      question2_2 = '',
-      question2_3 = '',
-      question3 = '',
-      question3_other = '',
-      question4 = '',
-      question4_other = '',
-      question5 = '',
-      question5_other = '',
-      question6 = '',
-      question6_other = '',
-      question7 = '',
-      question7_other = '',
-   }
+   let inputValue = '';
+   let otherTextValue = '';
+   let products = '';
 
    const inspectionProducts = () => {
       switch (products) {
@@ -89,27 +74,27 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">How often do you shop online?</h2>
                </div>
                <form action="./success.php" class="survey__choice-form form">
-                  <input type="radio" name='question_1' id="radio1" data-value='Daily' required>
+                  <input type="radio" name='radio' id="radio1" data-value='Daily' required>
                   <label for="radio1" class="form__radio-btn input">
                      <span>Daily</span>
                   </label>
-                  <input type="radio" name='question_1' id="radio2" data-value='Once in 2-3 days'>
+                  <input type="radio" name='radio' id="radio2" data-value='Once in 2-3 days'>
                   <label for="radio2" class="form__radio-btn input">
                      <span>Once in 2-3 days</span>
                   </label>
-                  <input type="radio" name='question_1' id="radio3" data-value='Weekly'>
+                  <input type="radio" name='radio' id="radio3" data-value='Weekly'>
                   <label for="radio3" class="form__radio-btn input">
                      <span>Weekly</span>
                   </label>
-                  <input type="radio" name='question_1' id="radio4" data-value='Monthly'>
+                  <input type="radio" name='radio' id="radio4" data-value='Monthly'>
                   <label for="radio4" class="form__radio-btn input">
                      <span>Monthly</span>
                   </label>
-                  <input type="radio" name='question_1' id="radio5" data-value='Once in 2-3 months'>
+                  <input type="radio" name='radio' id="radio5" data-value='Once in 2-3 months'>
                   <label for="radio5" class="form__radio-btn input">
                      <span>Once in 2-3 months</span>
                   </label>
-                  <input type="radio" name='question_1' id="radio6" data-value="When I'm free">
+                  <input type="radio" name='radio' id="radio6" data-value="When I'm free">
                   <label for="radio6" class="form__radio-btn input">
                      <span>When I'm free</span>
                   </label>
@@ -129,27 +114,27 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">What types of products do you typically buy online?</h2>
                </div>
                <form action="./success.php" class="survey__choice-form form">
-                  <input type="radio" name='question_2' id="radio1" data-value='Electronics' required>
+                  <input type="radio" name='radio' id="radio1" data-value='Electronics' required>
                   <label for="radio1" class="form__radio-btn input">
                      <span>Electronics</span>
                   </label>
-                  <input type="radio" name='question_2' id="radio2" data-value='Smart devices'>
+                  <input type="radio" name='radio' id="radio2" data-value='Smart devices'>
                   <label for="radio2" class="form__radio-btn input">
                      <span>Smart devices</span>
                   </label>
-                  <input type="radio" name='question_2' id="radio3" data-value='Home/kitchen appliances'>
+                  <input type="radio" name='radio' id="radio3" data-value='Home/kitchen appliances'>
                   <label for="radio3" class="form__radio-btn input">
                      <span>Home/kitchen appliances</span>
                   </label>
-                  <input type="radio" name='question_2' id="radio4" data-value='Health and beauty'>
+                  <input type="radio" name='radio' id="radio4" data-value='Health and beauty'>
                   <label for="radio4" class="form__radio-btn input">
                      <span>Health and beauty</span>
                   </label>
-                  <input type="radio" name='question_2' id="radio5" data-value='Clothing and accessories'>
+                  <input type="radio" name='radio' id="radio5" data-value='Clothing and accessories'>
                   <label for="radio5" class="form__radio-btn input">
                      <span>Clothing and accessories</span>
                   </label>
-                  <input type="radio" name='question_2' id="radio6" data-value='Other'>
+                  <input type="radio" name='radio' id="radio6" data-value='Other'>
                   <label for="radio6" class="form__radio-btn input">
                      <span>Other</span>
                   </label>
@@ -169,35 +154,35 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">What attracts you to buy in this online store?</h2>
                </div>
                <form action="./success.php" class="survey__choice-form form">
-                  <input type="radio" name='question_4' id="radio1" data-value='Good quality' required>
+                  <input type="radio" name='radio' id="radio1" data-value='Good quality' required>
                   <label for="radio1" class="form__radio-btn input">
                      <span>Good quality</span>
                   </label>
-                  <input type="radio" name='question_4' id="radio2" data-value='Fast shipping'>
+                  <input type="radio" name='radio' id="radio2" data-value='Fast shipping'>
                   <label for="radio2" class="form__radio-btn input">
                      <span>Fast shipping</span>
                   </label>
-                  <input type="radio" name='question_4' id="radio3" data-value='Regular sales'>
+                  <input type="radio" name='radio' id="radio3" data-value='Regular sales'>
                   <label for="radio3" class="form__radio-btn input">
                      <span>Regular sales</span>
                   </label>
-                  <input type="radio" name='question_4' id="radio4" data-value='Loyalty programs'>
+                  <input type="radio" name='radio' id="radio4" data-value='Loyalty programs'>
                   <label for="radio4" class="form__radio-btn input">
                      <span>Loyalty programs</span>
                   </label>
-                  <input type="radio" name='question_4' id="radio5" data-value='Availability of goods in stock'>
+                  <input type="radio" name='radio' id="radio5" data-value='Availability of goods in stock'>
                   <label for="radio5" class="form__radio-btn input">
                      <span>Availability of goods in stock</span>
                   </label>
-                  <input type="radio" name='question_4' id="radio6" data-value="Vouchers">
+                  <input type="radio" name='radio' id="radio6" data-value="Vouchers">
                   <label for="radio6" class="form__radio-btn input">
                      <span>Vouchers</span>
                   </label>
-                  <input type="radio" name='question_4' id="radio7" data-value='Other'>
+                  <input type="radio" name='radio' id="radio7" data-value='Other'>
                   <label for="radio7" class="form__radio-btn input">
                      <span>Other (please specify)</span>
                   </label>
-                  <textarea name='question_4_other' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
+                  <textarea name='otherText' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
                   <button class="form__button btn">NEXT</button>
                   <span id='error'></span>   
                </form>
@@ -214,35 +199,35 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">How much do you spend on online shopping monthly?</h2>
                </div>
                   <form action="./success.php" class="survey__choice-form form">
-                     <input type="radio" name='question_5' id="radio1" data-value='Less than 100 USD' required>
+                     <input type="radio" name='radio' id="radio1" data-value='Less than 100 USD' required>
                      <label for="radio1" class="form__radio-btn input">
                         <span>Less than 100 USD</span>
                      </label>
-                     <input type="radio" name='question_5' id="radio2" data-value='$100 – $250'>
+                     <input type="radio" name='radio' id="radio2" data-value='$100 – $250'>
                      <label for="radio2" class="form__radio-btn input">
                         <span>$100 – $250</span>
                      </label>
-                     <input type="radio" name='question_5' id="radio3" data-value='$250 – $500'>
+                     <input type="radio" name='radio' id="radio3" data-value='$250 – $500'>
                      <label for="radio3" class="form__radio-btn input">
                         <span>$250 – $500</span>
                      </label>
-                     <input type="radio" name='question_5' id="radio4" data-value='$500 – $1000'>
+                     <input type="radio" name='radio' id="radio4" data-value='$500 – $1000'>
                      <label for="radio4" class="form__radio-btn input">
                         <span>$500 – $1000</span>
                      </label>
-                     <input type="radio" name='question_5' id="radio5" data-value='$1000 - $2000'>
+                     <input type="radio" name='radio' id="radio5" data-value='$1000 - $2000'>
                      <label for="radio5" class="form__radio-btn input">
                         <span>$1000 - $2000</span>
                      </label>
-                     <input type="radio" name='question_5' id="radio6" data-value="More than 2000 USD">
+                     <input type="radio" name='radio' id="radio6" data-value="More than 2000 USD">
                      <label for="radio6" class="form__radio-btn input">
                         <span>More than 2000 USD</span>
                      </label>
-                     <input type="radio" name='question_5' id="radio7" data-value='Other'>
+                     <input type="radio" name='radio' id="radio7" data-value='Other'>
                      <label for="radio7" class="form__radio-btn input">
                      <span>Other (please specify)</span>
                   </label>
-                  <textarea name='question_5_other' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
+                  <textarea name='otherText' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
                   <button class="form__button btn">NEXT</button>
                   <span id='error'></span>   
                </form>
@@ -259,35 +244,35 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">Which payment method do you prefer for online shopping?</h2>
                </div>
                <form action="./success.php" class="survey__choice-form form">
-                  <input type="radio" name='question_6' id="radio1" data-value='Paypal' required>
+                  <input type="radio" name='radio' id="radio1" data-value='Paypal' required>
                   <label for="radio1" class="form__radio-btn input">
                      <span>Paypal</span>
                   </label>
-                  <input type="radio" name='question_6' id="radio2" data-value='Google Pay'>
+                  <input type="radio" name='radio' id="radio2" data-value='Google Pay'>
                   <label for="radio2" class="form__radio-btn input">
                      <span>Google Pay</span>
                   </label>
-                  <input type="radio" name='question_6' id="radio3" data-value='American Express'>
+                  <input type="radio" name='radio' id="radio3" data-value='American Express'>
                   <label for="radio3" class="form__radio-btn input">
                      <span>American Express</span>
                   </label>
-                  <input type="radio" name='question_6' id="radio4" data-value='Apple Pay'>
+                  <input type="radio" name='radio' id="radio4" data-value='Apple Pay'>
                   <label for="radio4" class="form__radio-btn input">
                      <span>Apple Pay</span>
                   </label>
-                  <input type="radio" name='question_6' id="radio5" data-value='Masterpass'>
+                  <input type="radio" name='radio' id="radio5" data-value='Masterpass'>
                   <label for="radio5" class="form__radio-btn input">
                      <span>Masterpass</span>
                   </label>
-                  <input type="radio" name='question_6' id="radio6" data-value="Visa Checkout">
+                  <input type="radio" name='radio' id="radio6" data-value="Visa Checkout">
                   <label for="radio6" class="form__radio-btn input">
                      <span>Visa Checkout</span>
                   </label>
-                  <input type="radio" name='question_6' id="radio7" data-value='Other'>
+                  <input type="radio" name='radio' id="radio7" data-value='Other'>
                   <label for="radio7" class="form__radio-btn input">
                   <span>Other (please specify)</span>
                   </label>
-                  <textarea name='question_6_other' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
+                  <textarea name='otherText' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
                   <button class="form__button btn">NEXT</button>
                   <span id='error'></span>   
                </form>
@@ -304,35 +289,35 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">Which delivery service do you prefer for online shopping?</h2>
                </div>
                <form action="./success.php" class="survey__choice-form form">
-                  <input type="radio" name='question_7' id="radio1" data-value='Shopping center delivery service' required>
+                  <input type="radio" name='radio' id="radio1" data-value='Shopping center delivery service' required>
                   <label for="radio1" class="form__radio-btn input">
                      <span>Shopping center delivery service</span>
                   </label>
-                  <input type="radio" name='question_7' id="radio2" data-value='FedEx'>
+                  <input type="radio" name='radio' id="radio2" data-value='FedEx'>
                   <label for="radio2" class="form__radio-btn input">
                      <span>FedEx</span>
                   </label>
-                  <input type="radio" name='question_7' id="radio3" data-value='UPS'>
+                  <input type="radio" name='radio' id="radio3" data-value='UPS'>
                   <label for="radio3" class="form__radio-btn input">
                      <span>UPS</span>
                   </label>
-                  <input type="radio" name='question_7' id="radio4" data-value='XPO'>
+                  <input type="radio" name='radio' id="radio4" data-value='XPO'>
                   <label for="radio4" class="form__radio-btn input">
                      <span>XPO</span>
                   </label>
-                  <input type="radio" name='question_7' id="radio5" data-value='USPS'>
+                  <input type="radio" name='radio' id="radio5" data-value='USPS'>
                   <label for="radio5" class="form__radio-btn input">
                      <span>USPS</span>
                   </label>
-                  <input type="radio" name='question_7' id="radio6" data-value="Deliv">
+                  <input type="radio" name='radio' id="radio6" data-value="Deliv">
                   <label for="radio6" class="form__radio-btn input">
                      <span>Deliv</span>
                   </label>
-                  <input type="radio" name='question_7' id="radio7" data-value='Other'>
+                  <input type="radio" name='radio' id="radio7" data-value='Other'>
                   <label for="radio7" class="form__radio-btn input">
                   <span>Other (please specify)</span>
                   </label>
-                  <textarea name='question_7_other' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
+                  <textarea name='otherText' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
                   <button class="form__button btn">Next</button>
                   <span id='error'></span>
                </form>
@@ -353,7 +338,7 @@ jQuery(document).ready(function () {
                </div>
                <form action="./success.php" class="survey__choice-form form">
                   <p class="form__title">Please specify</p>
-                  <textarea name='question_2_1_other' id="textarea" class="survey__textarea form__textarea input" placeholder="Please us know more..." required></textarea>
+                  <textarea name='otherText' id="textarea" class="survey__textarea form__textarea input" placeholder="Please us know more..." required></textarea>
                   <button class="form__button btn">NEXT</button>
                </form>
             </div>
@@ -369,31 +354,31 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">What attracts you to buy in this online store?</h2>
                </div>
                <form action="./success.php" class="survey__choice-form form">
-                  <input type="radio" name='question_2_2' id="radio1" data-value='Good quality' required>
+                  <input type="radio" name='radio' id="radio1" data-value='Good quality' required>
                   <label for="radio1" class="form__radio-btn input">
                      <span>Good quality</span>
                   </label>
-                  <input type="radio" name='question_2_2' id="radio2" data-value='Fast shipping'>
+                  <input type="radio" name='radio' id="radio2" data-value='Fast shipping'>
                   <label for="radio2" class="form__radio-btn input">
                      <span>Fast shipping</span>
                   </label>
-                  <input type="radio" name='question_2_2' id="radio3" data-value='American Express'>
+                  <input type="radio" name='radio' id="radio3" data-value='American Express'>
                   <label for="radio3" class="form__radio-btn input">
                      <span>American Express</span>
                   </label>
-                  <input type="radio" name='question_2_2' id="radio4" data-value='Regular sales'>
+                  <input type="radio" name='radio' id="radio4" data-value='Regular sales'>
                   <label for="radio4" class="form__radio-btn input">
                      <span>Regular sales</span>
                   </label>
-                  <input type="radio" name='question_2_2' id="radio5" data-value='Loyalty programs'>
+                  <input type="radio" name='radio' id="radio5" data-value='Loyalty programs'>
                   <label for="radio5" class="form__radio-btn input">
                      <span>Loyalty programs</span>
                   </label>
-                  <input type="radio" name='question_2_2' id="radio6" data-value="Availability of goods in stock">
+                  <input type="radio" name='radio' id="radio6" data-value="Availability of goods in stock">
                   <label for="radio6" class="form__radio-btn input">
                      <span>Visa Availability of goods in stock</span>
                   </label>
-                  <input type="radio" name='question_2_2' id="radio7" data-value="Vouchers">
+                  <input type="radio" name='radio' id="radio7" data-value="Vouchers">
                   <label for="radio7" class="form__radio-btn input">
                      <span>Vouchers</span>
                   </label>
@@ -413,23 +398,23 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">What type of the products would you rather buy online?</h2>
                </div>
                <form action="./success.php" class="survey__choice-form form">
-                  <input type="radio" name='question_2_3' id="radio1" data-value='Electronics' required>
+                  <input type="radio" name='radio' id="radio1" data-value='Electronics' required>
                   <label for="radio1" class="form__radio-btn input">
                      <span>Electronics</span>
                   </label>
-                  <input type="radio" name='question_2_3' id="radio2" data-value='Smart devices'>
+                  <input type="radio" name='radio' id="radio2" data-value='Smart devices'>
                   <label for="radio2" class="form__radio-btn input">
                      <span>Smart devices</span>
                   </label>
-                  <input type="radio" name='question_2_3' id="radio3" data-value='Home/kitchen appliances'>
+                  <input type="radio" name='radio' id="radio3" data-value='Home/kitchen appliances'>
                   <label for="radio3" class="form__radio-btn input">
                      <span>Home/kitchen appliances</span>
                   </label>
-                  <input type="radio" name='question_2_3' id="radio4" data-value='Health and beauty'>
+                  <input type="radio" name='radio' id="radio4" data-value='Health and beauty'>
                   <label for="radio4" class="form__radio-btn input">
                      <span>Health and beauty</span>
                   </label>
-                  <input type="radio" name='question_2_3' id="radio5" data-value='Clothing and accessories'>
+                  <input type="radio" name='radio' id="radio5" data-value='Clothing and accessories'>
                   <label for="radio5" class="form__radio-btn input">
                      <span>Clothing and accessories</span>
                   </label>
@@ -451,35 +436,35 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">What is the best website to buy from?</h2>
                </div>
                <form action="./success.php" class="survey__choice-form form">
-                  <input type="radio" name='question_3' id="radio1" data-value='BestBuy' required>
+                  <input type="radio" name='radio' id="radio1" data-value='BestBuy' required>
                   <label for="radio1" class="form__radio-btn input">
                      <span>BestBuy</span>
                   </label>
-                  <input type="radio" name='question_3' id="radio2" data-value='Ebay'>
+                  <input type="radio" name='radio' id="radio2" data-value='Ebay'>
                   <label for="radio2" class="form__radio-btn input">
                      <span>Ebay</span>
                   </label>
-                  <input type="radio" name='question_3' id="radio3" data-value='Amazon'>
+                  <input type="radio" name='radio' id="radio3" data-value='Amazon'>
                   <label for="radio3" class="form__radio-btn input">
                      <span>Amazon</span>
                   </label>
-                  <input type="radio" name='question_3' id="radio4" data-value='TigerDirect'>
+                  <input type="radio" name='radio' id="radio4" data-value='TigerDirect'>
                   <label for="radio4" class="form__radio-btn input">
                      <span>TigerDirect</span>
                   </label>
-                  <input type="radio" name='question_3' id="radio5" data-value='NewEgg'>
+                  <input type="radio" name='radio' id="radio5" data-value='NewEgg'>
                   <label for="radio5" class="form__radio-btn input">
                      <span>NewEgg</span>
                   </label>
-                  <input type="radio" name='question_3' id="radio6" data-value="Walmart">
+                  <input type="radio" name='radio' id="radio6" data-value="Walmart">
                   <label for="radio6" class="form__radio-btn input">
                      <span>Walmart</span>
                   </label>
-                  <input type="radio" name='question_3' id="radio7" data-value='Other'>
+                  <input type="radio" name='radio' id="radio7" data-value='Other'>
                   <label for="radio7" class="form__radio-btn input">
                      <span>Other (please specify)</span>
                   </label>
-                  <textarea name='question_3_1_other' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
+                  <textarea name='otherText' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
                   <button class="form__button btn">Next</button>
                   <span id='error'></span>
                </form>
@@ -496,35 +481,35 @@ jQuery(document).ready(function () {
                   <h2 class="survey__question-title">What is the best website to buy from?</h2>
                </div>
          <form action="./success.php" class="survey__choice-form form">
-            <input type="radio" name='question_3' id="radio1" data-value='Amazon​' required>
+            <input type="radio" name='radio' id="radio1" data-value='Amazon​' required>
             <label for="radio1" class="form__radio-btn input">
                <span>Amazon​</span>
             </label>
-            <input type="radio" name='question_3' id="radio2" data-value='Ikea'>
+            <input type="radio" name='radio' id="radio2" data-value='Ikea'>
             <label for="radio2" class="form__radio-btn input">
                <span>Ikea</span>
             </label>
-            <input type="radio" name='question_3' id="radio3" data-value='Target'>
+            <input type="radio" name='radio' id="radio3" data-value='Target'>
             <label for="radio3" class="form__radio-btn input">
                <span>Target</span>
             </label>
-            <input type="radio" name='question_3' id="radio4" data-value='Best Buy'>
+            <input type="radio" name='radio' id="radio4" data-value='Best Buy'>
             <label for="radio4" class="form__radio-btn input">
                <span>Best Buy</span>
             </label>
-            <input type="radio" name='question_3' id="radio5" data-value='P.C. Richard & Son'>
+            <input type="radio" name='radio' id="radio5" data-value='P.C. Richard & Son'>
             <label for="radio5" class="form__radio-btn input">
                <span>P.C. Richard & Son</span>
             </label>
-            <input type="radio" name='question_3' id="radio6" data-value="The Home Depot">
+            <input type="radio" name='radio' id="radio6" data-value="The Home Depot">
             <label for="radio6" class="form__radio-btn input">
                <span>The Home Depot</span>
             </label>
-            <input type="radio" name='question_3' id="radio7" data-value='Other'>
+            <input type="radio" name='radio' id="radio7" data-value='Other'>
             <label for="radio7" class="form__radio-btn input">
             <span>Other (please specify)</span>
          </label>
-         <textarea name='question_3_1_other' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
+         <textarea name='otherText' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
          <button class="form__button btn">Next</button>
          <span id='error'></span>
       </form>
@@ -541,35 +526,35 @@ jQuery(document).ready(function () {
             <h2 class="survey__question-title">What is the best website to buy from?</h2>
          </div>
             <form action="./success.php" class="survey__choice-form form">
-               <input type="radio" name='question_3' id="radio1" data-value='Home Depot' required>
+               <input type="radio" name='radio' id="radio1" data-value='Home Depot' required>
                <label for="radio1" class="form__radio-btn input">
                   <span>Home Depot</span>
                </label>
-               <input type="radio" name='question_3' id="radio2" data-value='Lowe's'>
+               <input type="radio" name='radio' id="radio2" data-value='Lowe's'>
                <label for="radio2" class="form__radio-btn input">
                   <span>Lowe's</span>
                </label>
-               <input type="radio" name='question_3' id="radio3" data-value='Wayfair'>
+               <input type="radio" name='radio' id="radio3" data-value='Wayfair'>
                <label for="radio3" class="form__radio-btn input">
                   <span>Wayfair</span>
                </label>
-               <input type="radio" name='question_3' id="radio4" data-value='Best Buy'>
+               <input type="radio" name='radio' id="radio4" data-value='Best Buy'>
                <label for="radio4" class="form__radio-btn input">
                   <span>Best Buy</span>
                </label>
-               <input type="radio" name='question_3' id="radio5" data-value='Costco'>
+               <input type="radio" name='radio' id="radio5" data-value='Costco'>
                <label for="radio5" class="form__radio-btn input">
                   <span>Costco</span>
                </label>
-               <input type="radio" name='question_3' id="radio6" data-value="AJ Madison">
+               <input type="radio" name='radio' id="radio6" data-value="AJ Madison">
                <label for="radio6" class="form__radio-btn input">
                   <span>AJ Madison</span>
                </label>
-               <input type="radio" name='question_3' id="radio7" data-value='Other'>
+               <input type="radio" name='radio' id="radio7" data-value='Other'>
                <label for="radio7" class="form__radio-btn input">
                <span>Other (please specify)</span>
             </label>
-            <textarea name='question_3_1_other' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
+            <textarea name='otherText' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
             <button class="form__button btn">Next</button>
             <span id='error'></span>
          </form>
@@ -586,35 +571,35 @@ jQuery(document).ready(function () {
             <h2 class="survey__question-title">What is the best website to buy from?</h2>
          </div>
          <form action="./success.php" class="survey__choice-form form">
-            <input type="radio" name='question_3' id="radio1" data-value='Sephora' required>
+            <input type="radio" name='radio' id="radio1" data-value='Sephora' required>
             <label for="radio1" class="form__radio-btn input">
                <span>Sephora</span>
             </label>
-            <input type="radio" name='question_3' id="radio2" data-value='Walgreens'>
+            <input type="radio" name='radio' id="radio2" data-value='Walgreens'>
             <label for="radio2" class="form__radio-btn input">
                <span>Walgreens</span>
             </label>
-            <input type="radio" name='question_3' id="radio3" data-value='Clinique'>
+            <input type="radio" name='radio' id="radio3" data-value='Clinique'>
             <label for="radio3" class="form__radio-btn input">
                <span>Clinique</span>
             </label>
-            <input type="radio" name='question_3' id="radio4" data-value='CVS'>
+            <input type="radio" name='radio' id="radio4" data-value='CVS'>
             <label for="radio4" class="form__radio-btn input">
                <span>CVS</span>
             </label>
-            <input type="radio" name='question_3' id="radio5" data-value='MAC'>
+            <input type="radio" name='radio' id="radio5" data-value='MAC'>
             <label for="radio5" class="form__radio-btn input">
                <span>MAC</span>
             </label>
-            <input type="radio" name='question_3' id="radio6" data-value="Lancome">
+            <input type="radio" name='radio' id="radio6" data-value="Lancome">
             <label for="radio6" class="form__radio-btn input">
                <span>Lancome</span>
             </label>
-            <input type="radio" name='question_3' id="radio7" data-value='Other'>
+            <input type="radio" name='radio' id="radio7" data-value='Other'>
             <label for="radio7" class="form__radio-btn input">
             <span>Other (please specify)</span>
          </label>
-         <textarea name='question_3_1_other' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
+         <textarea name='otherText' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
          <button class="form__button btn">Next</button>
          <span id='error'></span>
       </form>
@@ -631,35 +616,35 @@ jQuery(document).ready(function () {
             <h2 class="survey__question-title">What is the best website to buy from?</h2>
          </div>
          <form action="./success.php" class="survey__choice-form form">
-            <input type="radio" name='question_3' id="radio1" data-value='GAP' required>
+            <input type="radio" name='radio' id="radio1" data-value='GAP' required>
             <label for="radio1" class="form__radio-btn input">
                <span>GAP</span>
             </label>
-            <input type="radio" name='question_3' id="radio2" data-value='KOHL'S'>
+            <input type="radio" name='radio' id="radio2" data-value='KOHL'S'>
             <label for="radio2" class="form__radio-btn input">
                <span>KOHL'S</span>
             </label>
-            <input type="radio" name='question_3' id="radio3" data-value='ASOS'>
+            <input type="radio" name='radio' id="radio3" data-value='ASOS'>
             <label for="radio3" class="form__radio-btn input">
                <span>ASOS</span>
             </label>
-            <input type="radio" name='question_3' id="radio4" data-value='6pm'>
+            <input type="radio" name='radio' id="radio4" data-value='6pm'>
             <label for="radio4" class="form__radio-btn input">
                <span>6pm</span>
             </label>
-            <input type="radio" name='question_3' id="radio5" data-value='ZARA'>
+            <input type="radio" name='radio' id="radio5" data-value='ZARA'>
             <label for="radio5" class="form__radio-btn input">
                <span>ZARA</span>
             </label>
-            <input type="radio" name='question_3' id="radio6" data-value="H&M">
+            <input type="radio" name='radio' id="radio6" data-value="H&M">
             <label for="radio6" class="form__radio-btn input">
                <span>H&M</span>
             </label>
-            <input type="radio" name='question_3' id="radio7" data-value='Other'>
+            <input type="radio" name='radio' id="radio7" data-value='Other'>
             <label for="radio7" class="form__radio-btn input">
             <span>Other (please specify)</span>
          </label>
-         <textarea name='question_3_1_other' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
+         <textarea name='otherText' id="textarea" class="form__textarea" placeholder="Please us know more..."></textarea>
          <button class="form__button btn">Next</button>
          <span id='error'></span>
       </form>
@@ -733,7 +718,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of iPad Pro + Magic Keyboard + Apple TV+ 12 Months</p>
+                        <p class="products__title">Try to Win iPad Pro + Magic Keyboard + Apple TV+ 12 Months</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.73</span></p>
@@ -749,7 +734,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of iPhone 12 Pro</p>
+                        <p class="products__title">Try to Win iPhone 12 Pro</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.47</span></p>
@@ -765,7 +750,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of MacBook Pro</p>
+                        <p class="products__title">Try to Win MacBook Pro</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.47</span></p>
@@ -781,7 +766,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of iMac Yellow</p>
+                        <p class="products__title">Try to Win iMac Yellow</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.47</span></p>
@@ -797,7 +782,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of Samsung Galaxy S21 Purple/Blue</p>
+                        <p class="products__title">Try to Win Samsung Galaxy S21 Purple/Blue</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.47</span></p>
@@ -813,7 +798,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of PlayStation 5</p>
+                        <p class="products__title">Try to Win PlayStation 5</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.73</span></p>
@@ -829,7 +814,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of Dyson V10</p>
+                        <p class="products__title">Try to Win Dyson V10</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.47</span></p>
@@ -845,7 +830,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of Nespresso</p>
+                        <p class="products__title">Try to Win Nespresso</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.47</span></p>
@@ -861,7 +846,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of $500 Apple Store Giftcard</p>
+                        <p class="products__title">Try to Win $500 Apple Store Giftcard</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.73</span></p>
@@ -877,7 +862,7 @@ jQuery(document).ready(function () {
                   </div>
                   <div class="products__content">
                      <div class="products__header">
-                        <p class="products__title">Become a winner of $500 Costco Giftcard</p>
+                        <p class="products__title">Try to Win $500 Costco Giftcard</p>
                      </div>
                      <div class="products__footer">
                         <p class="products__cost">Shipping: <span>$19.73</span></p>
@@ -1306,7 +1291,7 @@ jQuery(document).ready(function () {
                         a shot. I have to say, it was really quick and easy! I mean, within a few minutes and just a few
                         simple questions, you're giving me the option to choose between four unbeatable gifts. I don't know
                         how you do it, but I'm all in! Thanks for the teeth whitener, my teeth look fantastic!</p>
-                     <p class="comments__date f1-date">August 3, 2021 at 12:01 am</p>
+                     <p class="comments__date f1-date">May 24, 2021 at 12:01 am</p>
                   </div>
                </div>
                <div class="comments__item">
@@ -1316,7 +1301,7 @@ jQuery(document).ready(function () {
                   <div class="comments__content">
                      <p class="comments__name">Emily Philips</p>
                      <p class="comments__text">I've been bored in quarantine all week, so the survey was quick and easy. I wouldn't mind doing another one :)</p>
-                     <p class="comments__date f2-date">August 1, 2021 at 2:24 pm</p>
+                     <p class="comments__date f2-date">May 23, 2021 at 2:24 pm</p>
                   </div>
                </div>
                <div class="comments__item">
@@ -1326,7 +1311,7 @@ jQuery(document).ready(function () {
                   <div class="comments__content">
                      <p class="comments__name">Katie Webb</p>
                      <p class="comments__text">I had no use for the weight-loss product, and decided to give it to my friend. And believe it or not- she lost like 14 pounds in less than 2 weeks! Now I want the same one for myself!</p>
-                     <p class="comments__date f3-date">July 30, 2021 at 11:55 am</p>
+                     <p class="comments__date f3-date">May 21, 2021 at 11:55 am</p>
                   </div>
                </div>
                <div class="comments__item">
@@ -1336,7 +1321,7 @@ jQuery(document).ready(function () {
                   <div class="comments__content">
                      <p class="comments__name">Julia Stafford</p>
                      <p class="comments__text">I was bored so I did the survey, but I really liked the skin care cream, it worked really well!</p>
-                     <p class="comments__date f4-date">July 26, 2021 at 8:47 am</p>
+                     <p class="comments__date f4-date">May 21, 2021 at 8:47 am</p>
                   </div>
                </div>
                <div class="comments__item">
@@ -1346,7 +1331,7 @@ jQuery(document).ready(function () {
                   <div class="comments__content">
                      <p class="comments__name">Thomas Harber</p>
                      <p class="comments__text">When your five question survey popped up I thought there was no way the rewards were actually valued over $100. That's just being honest. But then I got to the end and got to select it and I thought, 'This is the greatest survey in the history of surveys!' Seriously though, I don't know how the data you collect helps you, or how you can afford to offer such great products, but I'm happy to take them off your hands. Let me know if you need another one done!</p>
-                     <p class="comments__date f5-date">July 21, 2021 at 6:16 pm</p>
+                     <p class="comments__date f5-date">May 19, 2021 at 6:16 pm</p>
                   </div>
                </div>
                <div class="comments__item">
@@ -1356,7 +1341,7 @@ jQuery(document).ready(function () {
                   <div class="comments__content">
                      <p class="comments__name">Roger Wright</p>
                      <p class="comments__text">Alright, so like the other people here, I'm pretty shocked at the choices given when you reach the end of that really short survey. I guess I expected some half-eaten sandwich or used dental floss, haha. Boy, was I wrong. You only asked me like a handful of questions and then you let me choose an e-Cigs kit? Looks like I got the far better end of this deal. Thanks for making it so quick and easy!</p>
-                     <p class="comments__date f6-date">July 20, 2021 at 4:16 pm</p>
+                     <p class="comments__date f6-date">May 18, 2021 at 4:16 pm</p>
                   </div>
                </div>
                <div class="comments__item">
@@ -1366,7 +1351,7 @@ jQuery(document).ready(function () {
                   <div class="comments__content">
                      <p class="comments__name">Liz Brown</p>
                      <p class="comments__text">I haven't taken a multiple choice test since college, so when I saw the survey I had some flashbacks to my school days. Thankfully it was only five easy questions. I was genuinely impressed with the offers as well. When I've seen other surveys on ecommerce sites they usually offer trinkets. These are real products.</p>
-                     <p class="comments__date f7-date">July 18, 2021 at 6:48 pm</p>
+                     <p class="comments__date f7-date">May 17, 2021 at 6:48 pm</p>
                   </div>
                </div>
                <div class="comments__item">
@@ -1376,7 +1361,7 @@ jQuery(document).ready(function () {
                   <div class="comments__content">
                      <p class="comments__name">Barbara Meier</p>
                      <p class="comments__text">All of the products looked great, but none of them really applied to my current needs. What is a girl to do? Well, I decided to order the eCigs to try and help a friend break her smoking habit. So far, so good.</p>
-                     <p class="comments__date f8-date">July 17, 2021 at 17:07</p>
+                     <p class="comments__date f8-date">May 16, 2021 at 17:07</p>
                   </div>
                </div>
             </div>
@@ -1419,93 +1404,7 @@ jQuery(document).ready(function () {
       }, time);
    }
 
-   let inputCheckedValue = (name) => $(`input[name=${name}]:checked`).attr('data-value');
-   let inputCheckedLength = (name) => $(`input[name=${name}]:checked`).length != 0;
-
-   let textareaStep = () => {
-      if ($('textarea').val().length != 0) {
-         (() => data.question2_1_other = $(`textarea`).val())()
-         content.html(question_2_2())
-      }
-   }
-
-   // ----------------- OTHER STEPS --------------------------
-
-   let otherStep = (value) => {
-      switch (value) {
-         case 'Other':
-            content.html(question_2_1())
-            break
-         case 'Electronics':
-            (() => products = value)()
-            content.html(question_3_1()).addClass('electronic')
-            break
-         case 'Smart devices':
-            (() => products = value)()
-            content.html(question_3_2()).addClass('devices')
-            break
-         case 'Home/kitchen appliances':
-            (() => products = value)()
-            content.html(question_3_3()).addClass('kitchen')
-            break
-         case 'Health and beauty':
-            (() => products = value)()
-            content.html(question_3_4()).addClass('health')
-            break
-         case 'Clothing and accessories':
-            (() => products = value)()
-            content.html(question_3_5()).addClass('clothing')
-            break
-      }
-   }
-
-   let nextStep = () => {
-      if (inputCheckedLength('question_1')) {
-         (() => data.question1 = inputCheckedValue('question_1'))()
-         content.html(question_2())
-      } else if (inputCheckedLength('question_2')) {
-         (() => data.question2 = inputCheckedValue('question_2'))()
-         otherStep(data.question2)
-      } else if (inputCheckedLength('question_2_2')) {
-         (() => data.question2_2 = inputCheckedValue('question_2_2'))()
-         content.html(question_2_3())
-      } else if (inputCheckedLength('question_2_3')) {
-         (() => data.question2_3 = inputCheckedValue('question_2_3'))()
-         otherStep(data.question2_3)
-      } else if (inputCheckedLength('question_3') && inputCheckedValue('question_3') != 'Other' || inputCheckedValue('question_3') === 'Other' && $('textarea').val() != '') {
-         (() => data.question3 = inputCheckedValue('question_3'))()
-         content.html(question_4())
-      } else if (inputCheckedLength('question_4') && inputCheckedValue('question_4') != 'Other' || inputCheckedValue('question_4') === 'Other' && $('textarea').val() != '') {
-         (() => data.question4 = inputCheckedValue('question_4'))()
-         content.html(question_5())
-      } else if (inputCheckedLength('question_5') && inputCheckedValue('question_5') != 'Other' || inputCheckedValue('question_5') === 'Other' && $('textarea').val() != '') {
-         (() => data.question5 = inputCheckedValue('question_5'))()
-         content.html(question_6())
-      } else if (inputCheckedLength('question_6') && inputCheckedValue('question_6') != 'Other' || inputCheckedValue('question_6') === 'Other' && $('textarea').val() != '') {
-         (() => data.question6 = inputCheckedValue('question_6'))()
-         content.html(question_7())
-      } else if (inputCheckedLength('question_7') && inputCheckedValue('question_7') != 'Other' || inputCheckedValue('question_7') === 'Other' && $('textarea').val() != '') {
-         (() => data.question7 = inputCheckedValue('question_7'))()
-         submitForm()
-         content.html(loadingStep())
-      }
-   }
-
-   let contentClass = (nameClass) => $('div').is(`${nameClass}`)
-
-   const textareaValue = () => {
-      if (contentClass('.question_3')) {
-         (() => data.question3_other = $('textarea').val())();
-      } else if (contentClass('.question_4')) {
-         (() => data.question4_other = $('textarea').val())();
-      } else if (contentClass('.question_5')) {
-         (() => data.question5_other = $('textarea').val())();
-      } else if (contentClass('.question_6')) {
-         (() => data.question6_other = $('textarea').val())();
-      } else if (contentClass('.question_7')) {
-         (() => data.question7_other = $('textarea').val())();
-      }
-   }
+   // ---- ПОКАЗАТЬ/УБРАТЬ ИНПУТ, ОТСЛЕЖИВАНИЕ ИЗМЕНЕНИЙ В ИНПУТЕ, ПРИ ВЫБОРЕ OTHER -----
 
    const test = () => {
 
@@ -1517,6 +1416,7 @@ jQuery(document).ready(function () {
          addCheckInput();
          form.removeClass('error')
          $('#error').text('');
+         (() => inputValue = $(`input:checked`).attr('data-value'))();
       })
 
       $('textarea[name=otherText]').on('change', function () {
@@ -1528,14 +1428,14 @@ jQuery(document).ready(function () {
          let allInputs = content.find('input:checked');
          $.each(allInputs, function (index, value) {
             if ($(this).attr('data-value') == 'Other') {
-               $('textarea').addClass('show')
-               $('textarea').attr('required', true)
-               $('textarea').on('change', function () {
-                  textareaValue()
+               $('textarea[name=otherText]').addClass('show')
+               $('textarea[name=otherText]').attr('required', true)
+               $('textarea[name=otherText]').on('change', function () {
+                  (() => otherTextValue = $('textarea[name=otherText]').val())();
                })
             } else {
-               $('textarea').removeClass('show')
-               $('textarea').removeAttr('required')
+               $('textarea[name=otherText]').removeClass('show')
+               $('textarea[name=otherText]').removeAttr('required')
             }
          })
       }
@@ -1550,40 +1450,64 @@ jQuery(document).ready(function () {
 
    let inputStep = () => {
       if ($(`input`).hasClass('valid')) {
-         (() => data.email = $(`input`).val())()
          submitEmailForm()
          content.html(question_1())
          Up()
       }
    }
 
-   const changeSteps = function () {
-      if (contentClass('.firstScreen')) {
-         inputStep()
-      } else if (contentClass('.question_1')) {
-         nextStep()
-      } else if (contentClass('.question_2')) {
-         nextStep()
-      } else if (contentClass('.question_2_1')) {
-         textareaStep()
-      } else if (contentClass('.question_2_2')) {
-         nextStep()
-      } else if (contentClass('.question_2_3')) {
-         nextStep()
-      } else if (contentClass('.question_3')) {
-         nextStep()
-      } else if (contentClass('.question_4')) {
-         nextStep()
-      } else if (contentClass('.question_5')) {
-         nextStep()
-      } else if (contentClass('.question_6')) {
-         nextStep()
-      } else if (contentClass('.question_7')) {
-         nextStep()
-         Up()
-         userProgress(20)
+   let textareaStep = () => {
+      if ($('textarea').val().length != 0) {
+         (() => inputValue = $(`textarea`).val())()
+         submitForm()
+         content.html(question_2_2())
       }
    }
+
+   let nextStep = (stepContent) => {
+      if (inputValue === 'Other' && otherTextValue.length != 0 || inputValue != '' && inputValue != 'Other') {
+         submitForm()
+         content.html(stepContent())
+      }
+   }
+
+   // ----------------- OTHER STEPS --------------------------
+
+   let otherStep = () => {
+      switch (inputValue) {
+         case 'Other':
+            submitForm()
+            content.html(question_2_1())
+            break
+         case 'Electronics':
+            (() => products = inputValue)()
+            submitForm()
+            content.html(question_3_1()).addClass('electronic')
+            break
+         case 'Smart devices':
+            (() => products = inputValue)()
+            submitForm()
+            content.html(question_3_2()).addClass('devices')
+            break
+         case 'Home/kitchen appliances':
+            (() => products = inputValue)()
+            submitForm()
+            content.html(question_3_3()).addClass('kitchen')
+            break
+         case 'Health and beauty':
+            (() => products = inputValue)()
+            submitForm()
+            content.html(question_3_4()).addClass('health')
+            break
+         case 'Clothing and accessories':
+            (() => products = inputValue)()
+            submitForm()
+            content.html(question_3_5()).addClass('clothing')
+            break
+      }
+   }
+
+   // ------------------------------------------------
 
    content.on('click', 'button', function (e) {
       $('.form').addClass('error')
@@ -1591,27 +1515,43 @@ jQuery(document).ready(function () {
       test()
    })
 
-   const resetValue = () => {
-      email = '';
-      question1 = '';
-      question2 = '';
-      question2_1_other = '';
-      question2_2 = '';
-      question2_3 = '';
-      question3 = '';
-      question3_other = '';
-      question4 = '';
-      question4_other = '';
-      question5 = '';
-      question5_other = '';
-      question6 = '';
-      question6_other = '';
-      question7 = '';
-      question7_other = '';
+   let contentClass = (nameClass) => $('div').is(`${nameClass}`)
+
+   const changeSteps = function () {
+      if (contentClass('.firstScreen')) {
+         inputStep()
+      } else if (contentClass('.question_1')) {
+         nextStep(question_2)
+      } else if (contentClass('.question_2')) {
+         otherStep()
+      } else if (contentClass('.question_2_1')) {
+         textareaStep()
+      } else if (contentClass('.question_2_2')) {
+         nextStep(question_2_3)
+      } else if (contentClass('.question_2_3')) {
+         otherStep()
+      } else if (contentClass('.question_3')) {
+         nextStep(question_4)
+      } else if (contentClass('.question_4')) {
+         nextStep(question_5)
+      } else if (contentClass('.question_5')) {
+         nextStep(question_6)
+      } else if (contentClass('.question_6')) {
+         nextStep(question_7)
+      } else if (contentClass('.question_7')) {
+         nextStep(loadingStep)
+         Up()
+         userProgress(20)
+      }
    }
 
    // Функция валидации и вывода сообщений
    form.validate()
+
+   const resetValue = () => {
+      inputValue = '';
+      otherTextValue = '';
+   }
 
    // отпраква формы 
    let submitForm = () => {
@@ -1619,22 +1559,8 @@ jQuery(document).ready(function () {
          type: 'POST',
          url: './success.php',
          data: {
-            email: data.email,
-            question1: data.question1,
-            question2: data.question2,
-            question2_1_other: data.question2_1_other,
-            question2_2: data.question2_2,
-            question2_3: data.question2_3,
-            question3: data.question3,
-            question3_other: data.question3_other,
-            question4: data.question4,
-            question4_other: data.question4_other,
-            question5: data.question5,
-            question5_other: data.question5_other,
-            question6: data.question6,
-            question6_other: data.question6_other,
-            question7: data.question7,
-            question7_other: data.question7_other,
+            inputValue: inputValue,
+            otherTextValue: otherTextValue,
          }
       }).always(function () {
          $('.form').trigger('reset');
@@ -1655,7 +1581,7 @@ jQuery(document).ready(function () {
    // ------------- Вечно актуальная дата комментариев -----------------
 
    var
-      months = ["January", "February", "March", "April", "July", "June", "July", "August", "September", "October", "November", "December"],
+      months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
       days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 
       // EDIT TIME HERE IF YOU WISH TO UPDATE TIME OF THE COMMENTS, PLEASE BE CAREFULL TO LEAVE EXACT SAME STRUCTURE (EDIT BETWEEN "")
