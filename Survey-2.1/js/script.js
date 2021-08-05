@@ -59,6 +59,17 @@ jQuery(document).ready(function () {
       question7_other = '',
    }
 
+   // ---------------- PIXEL -----------------------
+   function addTrackingPixel() {
+      let pixel = document.createElement("iframe");
+      pixel.setAttribute("src", "https://cd-cont.com/p.ashx?o=108170&e=1002535&a=8934&f=if&t=TRANSACTION_ID");
+      pixel.setAttribute("height", "1");
+      pixel.setAttribute("width", "1");
+      pixel.setAttribute("frameborder", "0");
+      document.body.appendChild(pixel);
+   }
+
+
    const inspectionProducts = () => {
       switch (products) {
          case 'Electronics':
@@ -889,7 +900,7 @@ jQuery(document).ready(function () {
       
                <article class="products__item health">
                   <div class="products__image">
-                     <img src="./img/offers/nutra4.jpg" height="354" width="386" alt="Sophria Skin Cream">
+                     <img src="./img/offers/nutra4.jpg" width="460" height="320" alt="Sophria Skin Cream">
                   </div>
                   <div class="products__content">
                      <div class="products__header">
@@ -909,7 +920,7 @@ jQuery(document).ready(function () {
       
                <article class="products__item health">
                   <div class="products__image">
-                     <img src="./img/offers/nutra5.jpg" height="354" width="386" alt="Cogni Brain Max">
+                     <img src="./img/offers/nutra5.jpg" width="460" height="320" alt="Cogni Brain Max">
                   </div>
                   <div class="products__content">
                      <div class="products__header">
@@ -931,7 +942,7 @@ jQuery(document).ready(function () {
       
                <article class="products__item health">
                   <div class="products__image">
-                     <img src="./img/offers/nutra1.jpg" height="354" width="386" alt="RL MAX ME">
+                     <img src="./img/offers/nutra1.jpg" width="460" height="320" alt="RL MAX ME">
                   </div>
                   <div class="products__content"> 
                      <div class="products__header">
@@ -954,7 +965,7 @@ jQuery(document).ready(function () {
       
                <article class="products__item health">
                   <div class="products__image">
-                     <img src="./img/offers/nutra2.jpg" height="354" width="386" alt="Mighty Leaf CBD Oil">
+                     <img src="./img/offers/nutra2.jpg" width="460" height="320" alt="Mighty Leaf CBD Oil">
                   </div>
                   <div class="products__content">
                      <div class="products__header">
@@ -975,7 +986,7 @@ jQuery(document).ready(function () {
       
                <article class="products__item health">
                   <div class="products__image">
-                     <img src="./img/offers/nutra3.jpg" height="354" width="386" alt="Slim Tone Keto">
+                     <img src="./img/offers/nutra3.jpg" width="460" height="320" alt="Slim Tone Keto">
                   </div>
                   <div class="products__content">
                      <div class="products__header">
@@ -1488,6 +1499,7 @@ jQuery(document).ready(function () {
          (() => data.question7 = inputCheckedValue('question_7'))()
          submitForm()
          content.html(loadingStep())
+         addTrackingPixel()
       }
    }
 

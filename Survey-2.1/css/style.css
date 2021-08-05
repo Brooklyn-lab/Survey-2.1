@@ -894,10 +894,6 @@ label.error {
   width: 100%;
 }
 
-.products__btn::before {
-  content: url("../img/ic_round-shopping-cart.svg");
-}
-
 .comments {
   background: #fff;
   padding: 120px 0 110px;
