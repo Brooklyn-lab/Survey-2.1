@@ -53,6 +53,7 @@
 
    &__image {
       width: calc(50% - 60px);
+      position: relative;
 
       @media (max-width: $md2+px) {
          width: calc(50% - 15px);
@@ -94,6 +95,15 @@
    &__about {
       @include content-text;
       margin-bottom: 45px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -moz-box;
+      -moz-box-orient: vertical;
+      display: -webkit-box;
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
+      -moz-line-clamp: 3;
+      -webkit-box-orient: vertical;
 
       @media (max-width: $md3+px) {
          margin-bottom: 20px;
@@ -102,12 +112,6 @@
       span {
          @include content-text-bold;
       }
-   }
-
-   &__header {
-   }
-
-   &__footer {
    }
 
    &__price-wrapper {
@@ -162,4 +166,30 @@
          margin-top: 25px;
       }
    }
+}
+
+.discount {
+   position: absolute;
+   top: -30px;
+   left: -70px;
+
+   @media (max-width: $md1+px) {
+      width: 90px;
+      height: auto;
+      top: -25px;
+      left: -45px;
+   }
+   @media (max-width: $md2+px) {
+      top: -20px;
+      left: -30px;
+   }
+   @media (max-width: 575px) {
+      left: -20px;
+   }
+}
+
+.green {
+   color: $green;
+   text-transform: uppercase;
+   @include content-text-bold;
 }

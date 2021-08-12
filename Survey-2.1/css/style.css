@@ -801,6 +801,7 @@ label.error {
 
 .products__image {
   width: calc(50% - 60px);
+  position: relative;
 }
 
 .products__image img {
@@ -835,6 +836,15 @@ label.error {
   line-height: 136.1875%;
   font-weight: 400;
   margin-bottom: 45px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  display: -moz-box;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -moz-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .products__about span {
@@ -892,6 +902,20 @@ label.error {
   margin-top: 22px;
   max-width: initial;
   width: 100%;
+}
+
+.discount {
+  position: absolute;
+  top: -30px;
+  left: -70px;
+}
+
+.green {
+  color: #00a944;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 136.1875%;
+  font-weight: 700;
 }
 
 .comments {
@@ -1048,6 +1072,13 @@ label.error {
   .submit__body {
     max-width: 400px;
   }
+
+  .discount {
+    width: 90px;
+    height: auto;
+    top: -25px;
+    left: -45px;
+  }
 }
 
 @media (max-width: 991.98px) {
@@ -1149,6 +1180,11 @@ label.error {
 
   .products__content {
     width: calc(50% - 15px);
+  }
+
+  .discount {
+    top: -20px;
+    left: -30px;
   }
 }
 
@@ -1326,6 +1362,12 @@ label.error {
 
   .footer__cards {
     margin-top: 25px;
+  }
+}
+
+@media (max-width: 575px) {
+  .discount {
+    left: -20px;
   }
 }
 
