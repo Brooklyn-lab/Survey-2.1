@@ -1672,6 +1672,7 @@ jQuery(document).ready(function () {
       $('.form').addClass('error')
       changeSteps()
       test()
+      Up()
    })
 
    const resetValue = () => {
